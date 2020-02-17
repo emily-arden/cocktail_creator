@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  <title>Explore Results</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Results</h2>
+
+  <p>Cocktail: {{ data.drinks[0].strDrink }}</p>
+  <p>How to make it: {{ data.drinks[0].strinstructions }}</p>
+  <p>Ingredients: {{ results_message }}</p>
+
+  <a href="/">home</a>
+{% endblock %}

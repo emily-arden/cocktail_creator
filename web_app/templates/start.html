@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  <title>Cocktail Creator</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Cocktail Creator</h2>
+
+  <form action="/results" method="POST">
+
+    <label>Please choose one of the following options:</label>
+    <select name="choice">
+      <option value="rock">Rock</option>
+      <option value="paper">Paper</option>
+      <option value="scissors">Scissors</option>
+    </select>
+
+    <button>Submit</button>
+  </form>
+{% endblock %}
