@@ -2,6 +2,7 @@
 import requests
 import json
 import webbrowser
+import pprint
 
 from flask import Blueprint, request, render_template
 
@@ -39,9 +40,9 @@ def cocktail():
     else:
        return render_template("error.html")
 
-    response = request.get(url = URL, params = params)
+    response = requests.get(url = URL, params = params)
     data = response.json()
-    print(data)
+    pprint.pprint(data)
 
     return render_template("cocktail.html",
         data=data,

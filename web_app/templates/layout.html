@@ -27,7 +27,7 @@
 
       <!-- HEADER / NAV -->
       <div id="nav">
-        <h1><a href="/">Rock-Paper-Scissors App</a></h1>
+        <h1><a href="/">Cocktail Creator</a></h1>
       </div>
 
       <hr>
@@ -41,8 +41,8 @@
       <!-- FOOTER -->
       <div id="footer">
         <hr>
-        &copy; Copyright 2019 Prof. MJ Rossetti |
-        <a href="https://github.com/prof-rossetti/rock-paper-scissors-flask">source</a>
+        &copy; Copyright 2020|Cocktail Creator
+        <a>source</a>
       </div>
     </div>
 
@@ -56,7 +56,37 @@
         // closes data-dismiss="alert" flash messages
         // see: https://getbootstrap.com/docs/4.3/components/alerts/#javascript-behavior
         $().alert('close')
-
+      
+        function searchCocktail(data) {
+          console.log(data)
+          // Create a request variable and assign a new XMLHttpRequest object to it.
+          document.getElementById("searchresult").innerHTML = "";
+          $.get(
+            "https://www.thecocktaildb.com/api/json/v1/1/search.php",
+            {s : data},
+            function(data){
+              console.log(data);
+              if (data.drinks == null || data.drinks.length == 0) {
+                alert("Result not found!!")
+              } else {
+                for (d of data.drinks) {
+                  $('#searchresult').append(
+                  `<div class="col-md-4">
+                    <div class="cord mb-4 shadow-sm">
+                     <img class="card-img-top" src="${d.strDrinkThumb}"></img>
+                     <div class="card-body">
+                     <div class="card-title">${d.strDrink}</div>
+                     <form action="/search/cocktail" method="GET">
+                      <input type="hidden" name="id" value="${d.idDrink}" />
+                      <input class="btn btn-primary" type="submit" value="Detail" />
+                     </form
+                    </div>
+                  </div>`)  
+                }
+              }
+            }
+          )
+        }
     </script>
   </body>
 </html>

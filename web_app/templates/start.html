@@ -7,15 +7,10 @@
 {% block content %}
   <h2>Cocktail Creator</h2>
 
-  <form action="/results" method="POST">
-
-    <label>Please choose one of the following options:</label>
-    <select name="choice">
-      <option value="rock">Rock</option>
-      <option value="paper">Paper</option>
-      <option value="scissors">Scissors</option>
-    </select>
-
-    <button>Submit</button>
+  <form>
+    <label>Please put in the cocktail you want:</label>
+    <input type="text" id="nametext" name="name">
+    <input type="button" value="search" onclick="searchCocktail(document.getElementById('nametext').value)">
   </form>
+  <div id="searchresult" class="row"></div>
 {% endblock %}
