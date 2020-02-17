@@ -40,16 +40,16 @@ def cocktail():
 
     response = requests.get(url = URL, params = params)
     data = response.json()
+    pprint.pprint(data)
     cocktail = data.get('drinks')[0]
     ingredients = []
     for i in range(1,16):
         if cocktail.get(f'strIngredient{i}') is None:
             break
         print(cocktail.get(f'strIngredient{i}') )
-        ingredients.append(cocktail.get(f'strIngredient{i}') + ": " + cocktail.get(f'strMeasure{i}', "N/A"))
+        ingredients.append(cocktail.get(f'strIngredient{i}') + ": " + (cocktail.get(f'strMeasure{i}') if cocktail.get(f'strMeasure{i}') is not None else 'personal preference'))
         print(ingredients)
     data['ingredients'] = ingredients
-    pprint.pprint(data)
     return render_template("cocktail.html",
         data=data,
     )
