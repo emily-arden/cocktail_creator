@@ -20,7 +20,7 @@ def index():
 
 #
 # GET /search/cocktail
-# GET /search/cocktail?name=margarita
+# GET /search/cocktail?id=1111
 # POST /search/cocktail
 #
 @cocktail_routes.route("/search/cocktail", methods=["GET", "POST"])
@@ -37,13 +37,19 @@ def cocktail():
         # HANDLE POST REQUEST WITH CHOICE IN THE REQUEST BODY:
         params = {"i":request.values["id"]}
         # sending get request and saving the response as response object
-    else:
-       return render_template("error.html")
 
     response = requests.get(url = URL, params = params)
     data = response.json()
+    cocktail = data.get('drinks')[0]
+    ingredients = []
+    for i in range(1,16):
+        if cocktail.get(f'strIngredient{i}') is None:
+            break
+        print(cocktail.get(f'strIngredient{i}') )
+        ingredients.append(cocktail.get(f'strIngredient{i}') + ": " + cocktail.get(f'strMeasure{i}', "N/A"))
+        print(ingredients)
+    data['ingredients'] = ingredients
     pprint.pprint(data)
-
     return render_template("cocktail.html",
         data=data,
     )
