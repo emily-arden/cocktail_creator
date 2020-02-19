@@ -2,3 +2,4 @@ s2t2-game-utils
 python-dotenv
 Flask
 requests
+gunicorn
