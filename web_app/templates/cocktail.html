@@ -5,11 +5,15 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Results</h2>
+  <h2 style="color: rgb(83, 1, 131)">Results</h2>
 
-  <p>Cocktail: {{ data.drinks[0].strDrink }}</p>
-  <p>How to make it: {{ data.drinks[0].strInstructions }}</p>
-  <p>Ingredients: {{ data.ingredients }}</p>
+  <p style = "font-weight: bold;">Your Cocktail: </p>
+  <p>{{ data.drinks[0].strDrink }}</p>
+  <p style = "font-weight: bold;">Ingredients: </p>  
+  <p>{{ data.ingredients }}</p>
+  <p style = "font-weight: bold;"> How to make it: </p>
+  <p>{{ data.drinks[0].strInstructions }}</p>
+  
 
   <a href="/">home</a>
 {% endblock %}

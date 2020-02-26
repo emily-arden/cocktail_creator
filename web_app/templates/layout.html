@@ -23,12 +23,21 @@
       {% endif %}
     {% endwith %}
 
-    <div class="container">
-
+    
       <!-- HEADER / NAV -->
-      <div id="nav">
+      <!-- div id="nav">
         <h1><a href="/">Cocktail Creator</a></h1>
-      </div>
+      </div-->
+
+      <nav class="navbar navbar-dark" style="background-color:rgb(83, 1, 131)" style="text-size-adjust: large;">
+       
+      <a class="navbar-brand" href="/" >
+        Cocktail Creator
+      </a>
+      </nav>
+      
+      
+      <div class="container">
 
       <hr>
 
@@ -67,7 +76,7 @@
             function(data){
               console.log(data);
               if (data.drinks == null || data.drinks.length == 0) {
-                alert("Result not found!!")
+                alert("Result not found!!  Please try another key word!")
               } else {
                 for (d of data.drinks) {
                   $('#searchresult').append(
